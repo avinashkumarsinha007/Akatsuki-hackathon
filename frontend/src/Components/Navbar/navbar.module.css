@@ -1,0 +1,7 @@
+.nav{
+    background-color: #1e88e5;
+}
+.active{
+    background-image: linear-gradient(to right, #ff758c 0%, #ff7eb3 100%);
+    z-index: 999;
+}

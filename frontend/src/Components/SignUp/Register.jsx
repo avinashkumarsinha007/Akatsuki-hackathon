@@ -76,7 +76,7 @@ const Register = () => {
         </div>
         <div className="right-container">
           <div className="heading">
-            <h1>Create your account</h1>
+            <h1>Exam Registration Form</h1>
             <br />
             Already registered?
             <Link

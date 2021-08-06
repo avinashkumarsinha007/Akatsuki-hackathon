@@ -20,7 +20,8 @@ body {
   border: 1px solid rgb(255, 0, 0);
   background: whitesmoke;
   border-radius: 5px;
-  margin: 2% 5%;
+  margin: 1% 5%;
+  height: 80vh;
 }
 .heading h1 {
   text-align: center;

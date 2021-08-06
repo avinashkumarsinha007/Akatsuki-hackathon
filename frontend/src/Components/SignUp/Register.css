@@ -22,10 +22,10 @@ body {
   background: whitesmoke;
   border-radius: 5px;
   margin: 5% 12%;
+  height: 80vh;
 }
 .heading {
   text-align: center;
-  padding: 2%;
   font-weight: 500;
   letter-spacing: 2px;
 }
@@ -55,7 +55,7 @@ body {
   opacity: 0.8;
 }
 .google-btn {
-  padding: 8%;
+  padding: 2% 8%;
 }
 .google-btn button:hover {
   opacity: 0.8;

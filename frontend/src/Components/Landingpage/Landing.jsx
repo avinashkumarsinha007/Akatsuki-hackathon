@@ -1,5 +1,6 @@
 import React from 'react'
-import { Container, Div1, Div2, Div3, Div4, Img, Img2, Sub1, Sub2, Sub3, Sub4 } from './LandingSytle'
+import { Footer } from '../Footer/Footer'
+import { Container, Div1, Div2, Div3, Div4, Img, Img2, Sub1, Sub2, Sub3, Sub4, Sub5, Sub6 } from './LandingSytle'
 
 export const Landing =() =>{
     return(
@@ -48,6 +49,27 @@ export const Landing =() =>{
                        </div>
                    </Sub4>
               </Sub3>
+              <Sub5>
+                <h2>What we Do</h2>  
+                <Sub6>
+                       <div>
+                           <p>Secondary</p>
+                           <img src="https://images.pexels.com/photos/5212359/pexels-photo-5212359.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="blank"/>
+                           <p>At First we register Student to our website and take feed from student about result which he get from CBSE and he is not satisfiy with result we conduct test</p>
+                       </div>
+                       <div>
+                           <p>Senior</p>
+                           <img src="https://images.pexels.com/photos/3184636/pexels-photo-3184636.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="blank"/>
+                           <p>At First we register Student to our website and take feed from student about result which he get from CBSE and he is not satisfiy with result we conduct test</p>
+                       </div>
+                       <div>
+                           <p>Graduate</p>
+                           <img src="https://images.pexels.com/photos/1699414/pexels-photo-1699414.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="blank"/>
+                           <p>In Future our team is planning to do same thing for Graduate Student also</p>
+                       </div>
+                   </Sub6>
+              </Sub5>
+              <Footer/> 
          </Container>
         </>
     )

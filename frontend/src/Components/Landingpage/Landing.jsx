@@ -1,16 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Redirect } from 'react-router-dom'
 import { Footer } from '../Footer/Footer'
 import { Container, Div1, Div2, Div3, Div4, Img, Img2, Sub1, Sub2, Sub3, Sub4, Sub5, Sub6 } from './LandingSytle'
 
 export const Landing =() =>{
+    const [test,setTest] = useState(false)
+    if(test){
+      return  <Redirect to='/testregister' />
+    }
     return(
         <>
          <Container>
              <Sub1>
-                 <Div1>
+                 <Div1 onClick={()=>setTest(true)}>
                      <p style={{marginTop:"1.2rem"}}>Secondary School</p>
                  </Div1>
-                 <Div2>
+                 <Div2 onClick={()=>setTest(true)}>
                      <p style={{marginTop:"1.2rem"}}>Senior School</p>
                  </Div2>
              </Sub1>

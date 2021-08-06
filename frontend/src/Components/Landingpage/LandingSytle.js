@@ -104,3 +104,37 @@ column-gap: 3rem;
     }
 }
 `
+
+export const Sub5 = styled.div`
+background-color: #fbc02d;
+text-align: center;
+margin-bottom: 2rem;
+padding-top: 1rem;
+margin-top: 1rem    ;
+`
+
+export const Sub6 =  styled.div`
+display: flex;
+margin: auto;
+justify-content: center;
+column-gap: 0.5rem;
+padding-bottom: 2rem;
+p{
+    width: 22vw;
+}
+img{
+    width: 20vw;
+}
+@media screen and (max-width:500px){
+    width: 90vw;
+    flex-wrap: wrap;
+    column-gap: 1rem;
+    margin: auto;
+    p{
+        width: 80vw;
+    }
+    img{
+        width: 100px;
+    }
+}
+`

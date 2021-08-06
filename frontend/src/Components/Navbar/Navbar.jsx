@@ -27,7 +27,7 @@ export const Navbar= ({them,handleToggle}) => {
         <>
          <NavContainer className={navbar ? styles.active : styles.nav}>
             <ContainerOne>
-                <h2>Akatsuki</h2>
+            <Link to="/" style={{textDecoration:"none",color:"inherit"}}><h2>Akatsuki</h2></Link>
             </ContainerOne>
             <ContainerTwo>
               <Link to="#" style={{textDecoration:"none",color:"inherit"}}><h4>About</h4></Link>

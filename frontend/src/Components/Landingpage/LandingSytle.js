@@ -138,3 +138,8 @@ img{
     }
 }
 `
+export const Span = styled.span`
+position: fixed;
+bottom: 2rem;
+right: 1.5rem;
+`

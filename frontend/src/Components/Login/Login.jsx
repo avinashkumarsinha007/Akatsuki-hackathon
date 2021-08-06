@@ -80,7 +80,7 @@ const Login = () => {
                   value={password}
                 />
               </label>
-              <button>LogIn</button>
+              <button onClick={handleLogin}>LogIn</button>
             </form>
             <div className="or-line">
               <p>
@@ -88,7 +88,7 @@ const Login = () => {
               </p>
             </div>
             <div className="google-btn">
-              <button onClick={handleLogin}>Login with google</button>
+              <button>Login with google</button>
             </div>
           </div>
         </div>

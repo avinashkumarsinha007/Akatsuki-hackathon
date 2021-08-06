@@ -12,6 +12,7 @@ import {
 
 import mindImg from "../../imgs/mind.svg";
 
+
 import {
   CATEGORIES,
   NUM_OF_QUESTIONS,
@@ -22,6 +23,8 @@ import {
 import { shuffle } from '../../../utils';
 
 import Offline from '../Offline';
+
+import "./main.css"
 
 const Main = ({ startQuiz }) => {
   const [category, setCategory] = useState('0');
@@ -113,7 +116,7 @@ const Main = ({ startQuiz }) => {
   if (offline) return <Offline />;
 
   return (
-    <Container>
+    <Container className="main-cont">
       <Segment>
         <Item.Group divided>
           <Item>

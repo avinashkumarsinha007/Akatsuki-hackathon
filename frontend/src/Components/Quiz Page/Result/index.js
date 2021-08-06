@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Container, Menu } from 'semantic-ui-react';
+import "./result.css";
 
 import Stats from './Stats';
 import QNA from './QNA';
@@ -20,7 +21,7 @@ const Result = ({
   };
 
   return (
-    <Container>
+    <Container className="main-cont">
       <Menu fluid widths={2}>
         <Menu.Item
           name="Stats"

@@ -7,7 +7,8 @@ const registerExamSchema = new mongoose.Schema({
     user :{ type: mongoose.Schema.Types.ObjectId, ref:"user", required: false },
     date: { type: String, required: true },
     time:{type:String,required:true},
-    token:{type:String,required:true},
+    token: { type: String, required: true },
+    subject:{type:String,required:true}
 }, {
     timestamps: true,
     versionKey: false

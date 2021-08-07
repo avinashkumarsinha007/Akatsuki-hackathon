@@ -1,6 +1,6 @@
 const express = require("express");
 const User = require("../models/user.model");
-const upload = require("../middleware/upload")
+// const upload = require("../middleware/upload")
 const router = express.Router();
 const protect = require("../middleware/protect");
 
@@ -28,13 +28,13 @@ router.get("/:id", async (req, res) => {
     }
 });
 
-router.patch("/:id",protect,upload.single("Profile_url"), async (req, res) => {
+router.patch("/:id",protect, async (req, res) => {
     try
     {
         const user = await User.findByIdAndUpdate(req.params.id, {
             email: req.body.email,
             first_name: req.body.first_name,
-            Profile_url: req.file.path,
+            // Profile_url: req.file.path,
             last_name :req.body.last_name,
             password: req.body.password,
         },{new:true})

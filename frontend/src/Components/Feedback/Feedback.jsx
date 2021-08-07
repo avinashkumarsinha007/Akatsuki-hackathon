@@ -45,61 +45,78 @@ const Feedback = () => {
     <>
       <div className="container">
         <div className="heading">
-          <h1>Feedback Form for students</h1>
-          <p>
-            You can fill the feedback and let us know in what aspects you want
-            to do better.
-          </p>
+          <p>Feedback Form to your examinee</p>
+          <span>
+            Please give some valuable feedback to examinee where to improve
+            themselves in respective fields.
+          </span>
           <form className="form">
-            <p>What is your strength?</p>
+            <h3>Subject Knowledge </h3>
+            <span>
+              Does examinee has a full understanding of subject and is able to
+              undertake daily activities without supervision?
+            </span>
             <textarea
               type="text"
-              placeholder="eg. Im good at maths"
+              placeholder="Type here"
               name="query1"
               value={query1}
               onChange={handleChange}
             />
-            <p>What is your strength?</p>
+            <h3> Time Management</h3>
+            <span>
+              Does the examinee is able to manage the time constraint during the
+              assessment?
+            </span>
             <textarea
-              placeholder="eg. Im good at maths"
+              placeholder="Type here"
               type="text"
               name="query2"
               value={query2}
               onChange={handleChange}
             />
-            <p>What is your strength?</p>
+            <h3>Quality of work</h3>
+            <span>
+              Have work is completed thoroughly and with care, correctly and
+              provided required paperwork is thorough and neat.
+            </span>
             <textarea
-              placeholder="eg. Im good at maths"
+              placeholder="Type here"
               type="text"
               name="query3"
               value={query3}
               onChange={handleChange}
             />
-            <p>What is your strength?</p>
+            <h3>Overall Assessment</h3>
+            <span>Rate the examinee on the scale of 0 to 5.</span>
             <textarea
-              placeholder="eg. Im good at maths"
+              placeholder="Type here"
               type="text"
               name="query4"
               value={query4}
               onChange={handleChange}
             />
-            <p>What is your strength?</p>
+            <h3>Areas to improve</h3>
+            <span>Any specific area need to be improved?</span>
             <textarea
-              placeholder="eg. Im good at maths"
+              placeholder="Type here"
               type="text"
               name="query5"
               value={query5}
               onChange={handleChange}
             />
-            <p>What is your strength?</p>
+            <h3>Remarks</h3>
+            <span>Do you have any final comments you would like to raise?</span>
             <textarea
-              placeholder="eg. Im good at maths"
+              placeholder="Type here"
               type="text"
               name="query6"
               value={query6}
               onChange={handleChange}
             />
-            <button onClick={handleSubmitForm}>Submit</button>
+            <button class="ui yellow button" onClick={handleSubmitForm}>
+              Submit Your Feedback
+            </button>
           </form>
         </div>
       </div>

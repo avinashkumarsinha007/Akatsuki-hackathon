@@ -15,7 +15,8 @@ router.post("/",upload.single("profile_pict"),protect, async (req, res) => {
             user :req.body.user,
             date: req.body.date,
             time:req.body.time,
-            token:req.body.token,
+            token: req.body.token,
+            subject:req.body.subject
         })
         res.status(200).json({ exam: exam });
     }
@@ -34,7 +35,8 @@ router.patch("/:id",upload.single("profile_pict"),protect, async (req, res) => {
             user :req.body.user,
             date: req.body.date,
             time:req.body.time,
-            token:req.body.token,
+            token: req.body.token,
+            subject:req.body.subject
         },{new:true})
         res.status(201).json({ exam: exam });
     }
@@ -55,10 +57,10 @@ router.get("/", async (req, res) => {
     }
 });
 
-router.get("/:id", async (req, res) => {
+router.get("/:userId", async (req, res) => {
     try
     {
-        const exam = await Exam.findById(req.params.id).lean().exec();
+        const exam = await Exam.find({user: req.params.userId }).lean().exec();
         res.status(200).json({ exam: exam });
     }
     catch

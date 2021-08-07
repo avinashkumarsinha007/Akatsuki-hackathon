@@ -1,13 +1,10 @@
 const mongoose = require("mongoose");
 
 const paperSchema = new mongoose.Schema({
-    roll_no: { type: Number, required: true },
+    subject: { type: String, required: true },
     class: { type: String, required: false },
-    profile_pict: { type: String, required: false },
-    user :{ type: mongoose.Schema.Types.ObjectId, ref:"user", required: false },
-    date: { type: String, required: true },
-    time:{type:String,required:true},
-    token:{type:String,required:true},
+    paperNo: { type: Number, required: false },
+    paper:[{ type: Object, required: false }],
 }, {
     timestamps: true,
     versionKey: false

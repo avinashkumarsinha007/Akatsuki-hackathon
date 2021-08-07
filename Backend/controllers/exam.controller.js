@@ -57,10 +57,10 @@ router.get("/", async (req, res) => {
     }
 });
 
-router.get("/:id", async (req, res) => {
+router.get("/:userId", async (req, res) => {
     try
     {
-        const exam = await Exam.findById(req.params.id).lean().exec();
+        const exam = await Exam.find({user: req.params.userId }).lean().exec();
         res.status(200).json({ exam: exam });
     }
     catch

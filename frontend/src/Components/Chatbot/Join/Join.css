@@ -2,11 +2,18 @@
     text-align: center;
     height: 100vh;
     background-color:#eeeeee;
-
   }
   
   .joinInnerContainer {
     width: 20%;
+    margin-top: 2rem;
+    margin-left: 44rem;
+  }
+  @media screen and (max-width:500px) {
+    .joinInnerContainer{
+      margin-top: 2rem;
+      margin-left: 2rem;
+    }
   }
   
   .joinInput {
@@ -20,6 +27,7 @@
     font-size: 2.5em;
     padding-bottom: 10px;
     border-bottom: 2px solid #000;
+    margin-bottom: 1rem;
   }
   
   .button {
@@ -31,7 +39,7 @@
       border-radius: 5px;
       display: inline-block;
       border: none;
-      width: 95%;
+      width: 81%;
   }
   
   .mt-20 {
@@ -58,8 +66,13 @@
 display: flex;
 justify-content: center;
 column-gap: 2rem;
-margin-top: 1rem;
+padding-top: 1rem;
 }
 .Johnimg{
   width: 11vw;
+}
+@media screen and (max-width:500px){
+  .mentor{
+    column-gap: 1rem;
+  }
 }

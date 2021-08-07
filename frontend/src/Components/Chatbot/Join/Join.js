@@ -20,7 +20,7 @@ export default function SignIn() {
         </div>
         <div>
           <img className="Johnimg" src="https://chatteris.org.hk/wp-content/uploads/2019/08/1231232.jpg" alt="blank"/>
-          <p></p>
+          <p>Heelan-Instructor</p>
         </div>
       </div>
       <div className="joinInnerContainer">

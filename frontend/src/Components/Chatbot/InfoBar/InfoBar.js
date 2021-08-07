@@ -10,7 +10,6 @@ const InfoBar = ({ room }) => (
   <div className="infoBar">
     <div className="leftInnerContainer">
       <FiberManualRecordIcon/>
-      <h3 style={{color:"#000"}}>{room}</h3>
     </div>
     <div className="rightInnerContainer">
       <a href="/"><CloseIcon/></a>

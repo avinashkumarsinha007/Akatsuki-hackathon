@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
 import { signupSuc, signupFail } from "../../Redux/SignUp/action";
+import { Button } from "semantic-ui-react";
 const Register = () => {
   const obj = {
     firstname: "",
@@ -76,7 +77,7 @@ const Register = () => {
         </div>
         <div className="right-container">
           <div className="heading">
-            <h1>Exam Registration Form</h1>
+            <p>Exam Registration Form</p>
             <br />
             Already registered?
             <Link
@@ -88,29 +89,29 @@ const Register = () => {
             here
           </div>
           <div>
-            <form className="form">
-              <label>
-                Firstname
+            <form class="ui form">
+              <div class="field">
+                <label>First Name</label>
                 <input
                   type="text"
-                  placeholder="eg. admin@gmail.com"
+                  placeholder="First Name"
                   name="firstname"
                   onChange={handleChange}
                   value={firstname}
                 />
-              </label>
-              <label>
-                Lastname
+              </div>
+              <div class="field">
+                <label>Last Name</label>
                 <input
                   type="text"
-                  placeholder="eg. admin12"
                   name="lastname"
                   onChange={handleChange}
                   value={lastname}
+                  placeholder="Last Name"
                 />
-              </label>
-              <label>
-                Email
+              </div>
+              <div class="field">
+                <label>Email</label>
                 <input
                   type="email"
                   placeholder="eg. admin@gmail.com"
@@ -118,26 +119,32 @@ const Register = () => {
                   onChange={handleChange}
                   value={email}
                 />
-              </label>
-              <label>
-                Password
+              </div>
+              <div class="field">
+                <label>Password</label>
                 <input
                   type="password"
-                  placeholder="eg. admin@gmail.com"
+                  placeholder="eg. admin123"
                   name="password"
                   onChange={handleChange}
                   value={password}
                 />
-              </label>
-              <button onClick={handleRegister}>SignUp</button>
+              </div>
+
+              <button class="ui yellow button" onClick={handleRegister}>
+                SignUp
+              </button>
             </form>
-            <div className="or-line">
+            {/* <div className="or-line">
               <p>
                 <span>Or</span>
               </p>
-            </div>
-            <div className="google-btn">
-              <button>SignUp with google</button>
+            </div> */}
+            <div className="google-btn1">
+              <button class="ui google plus button">
+                <i class="google plus icon"></i>
+                Google
+              </button>
             </div>
           </div>
         </div>

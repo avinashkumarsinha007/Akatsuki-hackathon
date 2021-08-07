@@ -17,17 +17,15 @@ body {
   height: 90vh;
 }
 .right-container {
-  border: 1px solid rgb(255, 0, 0);
   background: whitesmoke;
   border-radius: 5px;
-  margin: 1% 5%;
-  height: 80vh;
+  margin: 2% 5%;
 }
-.heading h1 {
+.heading {
   text-align: center;
-  padding: 5%;
-  font-weight: 500;
-  letter-spacing: 2px;
+}
+.heading p {
+  font-size: 30px;
 }
 
 /* Form */
@@ -52,7 +50,7 @@ body {
   font-size: large;
 }
 .google-btn {
-  padding: 8%;
+  padding: 10%;
 }
 .google-btn button {
   border: 0;

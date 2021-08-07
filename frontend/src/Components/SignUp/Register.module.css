@@ -1,19 +1,21 @@
-
 .container {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto;
+  height: 100vh;
+  background: whitesmoke;
+  letter-spacing: 1px;
+}
+
+.left_container img {
+  padding:  0 0 5% 15%;
   height: 100vh;
 }
-.left-container {
-  width: 50%;
-}
-.left-container img {
-  height: 90vh;
-}
-.right-container {
-  width: 60%;
+.right_container {
   background: whitesmoke;
   border-radius: 5px;
-  margin: 2% 5%;
+  margin: 2% 10% 0 0;
+  height: 100vh;
+  padding: 5%;
 }
 
 .heading {
@@ -49,13 +51,13 @@
 .form button:hover {
   opacity: 0.8;
 }
-.google-btn1 {
+.google_btn1 {
   padding: 2% 10%;
 }
-.google-btn1 button:hover {
+.google_btn1 button:hover {
   opacity: 0.8;
 }
-.google-btn1 button {
+.google_btn1 button {
   border: 0;
   background: rgb(39, 91, 204);
   color: #fff;
@@ -64,32 +66,6 @@
   cursor: pointer;
   font-size: large;
 }
-.or-line {
-  padding: 0 10%;
-  margin-top: -50px;
-}
-.or-line p {
-  width: 100%;
-  text-align: center;
-  border-bottom: 1px solid #000;
-  line-height: 0.1em;
-  margin: 10px 0 20px;
-}
-.or-line p span {
-  background: #fff;
-  padding: 0 10px;
-}
 
 @media screen and (max-width: 850px) {
-  .container {
-    display: grid;
-  }
-  .left-container {
-    width: 100%;
-    margin: auto;
-  }
-  .right-container {
-    width: 100%;
-    margin: auto;
-  }
 }

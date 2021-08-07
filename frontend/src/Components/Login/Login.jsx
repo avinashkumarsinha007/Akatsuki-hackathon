@@ -31,7 +31,6 @@ const Login = () => {
     axios
       .post("http://localhost:4000/login", loginDetails)
       .then((res) => {
-        console.log(res);
         dispatch(loginSuc(loginDetails));
       })
       .catch((err) => {

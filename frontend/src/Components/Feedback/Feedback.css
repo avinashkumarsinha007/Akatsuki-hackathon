@@ -1,14 +1,7 @@
-* {
-  margin: 0;
-  padding: 0;
-  letter-spacing: 1px;
-}
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background: whitesmoke;
-}
 .container {
+  font-family: Arial, Helvetica, sans-serif;
   padding: 2%;
+  letter-spacing: 1px;
 }
 
 .heading {
@@ -19,12 +12,17 @@ body {
   letter-spacing: 2px;
 }
 .heading p {
-  margin: 1%;
+  margin: 1% 0;
 }
 
 .form {
   padding: 2%;
+  text-align: left;
 }
+.form p {
+  font-size: 10px;
+}
+
 .form textarea {
   width: 100%;
   padding: 2%;

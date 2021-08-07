@@ -6,6 +6,33 @@ export const Container =  styled.div`
 export const Sub1 = styled.div`
 display: flex;
 margin-top: 1rem;
+margin-bottom: 2rem;
+.p1{
+    font-size: 1rem;
+    position: absolute;
+    top: 13rem;
+    left: 25rem;
+}
+.p2{
+    font-size: 1rem;
+    position: absolute;
+    top: 13rem;
+    right: 25rem;
+}
+@media screen and (max-width:500px){
+    .p1{
+    font-size: 0.8rem;
+    position: absolute;
+    top: 12rem;
+    left: 4rem; 
+    }
+    .p2{
+    font-size: 0.8rem;
+    position: absolute;
+    top: 12rem;
+    right: 4rem; 
+    }
+}
 `
 export const Div1 = styled.div`
 text-align: center;
@@ -50,11 +77,20 @@ font-size: 1rem;
 export const Img =  styled.img`
 width: 98.9vw;
 margin-top: 1rem;
-margin-bottom: 1rem;
+margin-bottom: 2rem;
 `
 
 export const Sub2 = styled.div`
 display: flex;
+margin-bottom: 3rem;
+.p3{
+    font-size: 1.2rem;
+}
+@media screen and (max-width:500px){
+    .p3{
+        font-size: 1rem;
+    }
+}
 `
 
 export const Div3 = styled.div`
@@ -110,7 +146,7 @@ background-color: #fbc02d;
 text-align: center;
 margin-bottom: 2rem;
 padding-top: 1rem;
-margin-top: 1rem    ;
+margin-top: 2rem    ;
 `
 
 export const Sub6 =  styled.div`

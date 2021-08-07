@@ -43,7 +43,7 @@ export const Footer = () => {
       </Wrapper1>
       <Wrapper3>
         <div>
-          <p>SHOW US ON SOCIAL MEDIA</p>
+          <p style={{textAlign:"center"}}>Follow us</p>
           <div className="logo">
             <InstagramIcon />
             <FacebookIcon />

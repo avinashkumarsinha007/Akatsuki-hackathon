@@ -47,7 +47,7 @@ const Login = () => {
         </div>
         <div className="right-container">
           <div className="heading">
-            <h1>Login Here</h1>
+            <p>Login Here</p>
             <br />
             Already registered?
             <Link
@@ -59,9 +59,9 @@ const Login = () => {
             here
           </div>
           <div>
-            <form className="form">
-              <label>
-                Email
+            <form class="ui form">
+              <div class="field">
+                <label>Email</label>
                 <input
                   type="email"
                   placeholder="eg. admin@gmail.com"
@@ -69,26 +69,32 @@ const Login = () => {
                   onChange={handleChange}
                   value={email}
                 />
-              </label>
-              <label>
-                Password
+              </div>
+              <div class="field">
+                <label>Password</label>
                 <input
                   type="password"
-                  placeholder="eg. admin@gmail.com"
+                  placeholder="eg. admin123"
                   name="password"
                   onChange={handleChange}
                   value={password}
                 />
-              </label>
-              <button onClick={handleLogin}>LogIn</button>
+              </div>
+
+              <button class="ui yellow button" onClick={handleLogin}>
+                Login
+              </button>
             </form>
-            <div className="or-line">
+            {/* <div className="or-line">
               <p>
                 <span>Or</span>
               </p>
-            </div>
-            <div className="google-btn">
-              <button>Login with google</button>
+            </div> */}
+            <div className="google-btn1">
+              <button class="ui google plus button">
+                <i class="google plus icon"></i>
+                Google
+              </button>
             </div>
           </div>
         </div>

@@ -5,6 +5,7 @@ display: flex;
 justify-content:space-between;
 top:0;
 position: sticky;
+padding: 1.5rem 0rem;
 `
 
 export const ContainerOne = styled.div`
@@ -25,6 +26,7 @@ transition: 0.5 ease-out;
 
 export const ContainerTwo = styled.div`
 display: flex;
+align-items: center;
 margin-right:10rem;
 column-gap: 2rem;
 cursor: pointer;

@@ -1,0 +1,15 @@
+.loader-cont{
+    height: auto;
+    width:15% !important;
+    box-shadow: none !important;
+    margin: auto;
+    margin-top: 13%;
+   
+}
+
+.loader-text-cont{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: none !important;
+}

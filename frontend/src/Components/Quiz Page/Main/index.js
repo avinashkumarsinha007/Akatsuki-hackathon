@@ -1,243 +1,100 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import {
-  Container,
-  Segment,
-  Item,
-  Dropdown,
-  Divider,
   Button,
-  Message,
 } from 'semantic-ui-react';
 
-import mindImg from "../../imgs/mind.svg";
-
-
-import {
-  CATEGORIES,
-  NUM_OF_QUESTIONS,
-  DIFFICULTY,
-  QUESTIONS_TYPE,
-  COUNTDOWN_TIME,
-} from '../../constants';
 import { shuffle } from '../../../utils';
-
-import Offline from '../Offline';
 
 import "./main.css"
 
 const Main = ({ startQuiz }) => {
-  const [category, setCategory] = useState('0');
-  const [numOfQuestions, setNumOfQuestions] = useState(5);
-  const [difficulty, setDifficulty] = useState('0');
-  const [questionsType, setQuestionsType] = useState('0');
-  const [countdownTime, setCountdownTime] = useState({
-    hours: 0,
-    minutes: 120,
-    seconds: 0,
-  });
+
   const [processing, setProcessing] = useState(false);
-  const [error, setError] = useState(null);
-  const [offline, setOffline] = useState(false);
-
-  const handleTimeChange = (e, { name, value }) => {
-    setCountdownTime({ ...countdownTime, [name]: value });
-  };
-
-  let allFieldsSelected = false;
-  if (
-    category &&
-    numOfQuestions &&
-    difficulty &&
-    questionsType &&
-    (countdownTime.hours || countdownTime.minutes || countdownTime.seconds)
-  ) {
-    allFieldsSelected = true;
-  }
+  const [error, setError] = useState(false);
 
   const fetchData = () => {
     setProcessing(true);
 
-    if (error) setError(null);
-
-    const API = `https://opentdb.com/api.php?amount=${numOfQuestions}&category=${category}&difficulty=${difficulty}&type=${questionsType}`;
+    const API = `https://opentdb.com/api.php?amount=5`;
 
     fetch(API)
       .then(respone => respone.json())
       .then(data =>
         setTimeout(() => {
-          const { response_code, results } = data;
 
-          if (response_code === 1) {
-            const message = (
-              <p>
-                The API doesn't have enough questions for your query. (Ex.
-                Asking for 50 Questions in a Category that only has 20.)
-                <br />
-                <br />
-                Please change the <strong>No. of Questions</strong>,{' '}
-                <strong>Difficulty Level</strong>, or{' '}
-                <strong>Type of Questions</strong>.
-              </p>
-            );
+          const { results } = data;
 
-            setProcessing(false);
-            setError({ message });
+          setProcessing(false);
 
-            return;
-          }
-
-          results.forEach(element => {
-            element.options = shuffle([
-              element.correct_answer,
-              ...element.incorrect_answers,
+          results.forEach(el => {
+            el.options = shuffle([
+              el.correct_answer,
+              ...el.incorrect_answers,
             ]);
           });
 
-          setProcessing(false);
+
           startQuiz(
-            results,
-            countdownTime.hours + countdownTime.minutes + countdownTime.seconds
+            results
           );
         }, 1000)
       )
       .catch(error =>
         setTimeout(() => {
-          if (!navigator.onLine) {
-            setOffline(true);
-          } else {
-            setProcessing(false);
-            setError(error);
-          }
-        }, 1000)
+          setProcessing(false);
+          setError(error);
+        }
+          , 1000)
       );
   };
 
-  if (offline) return <Offline />;
-
   return (
-    <Container className="main-cont">
-      <Segment>
-        <Item.Group divided>
-          <Item>
-            <Item.Image src={mindImg} />
-            <Item.Content>
-              <Item.Header>
-                <h1>The Ultimate Trivia Quiz</h1>
-              </Item.Header>
-              {error && (
-                <Message error onDismiss={() => setError(null)}>
-                  <Message.Header>Error!</Message.Header>
-                  {error.message}
-                </Message>
-              )}
-              <Divider />
-              <Item.Meta>
-                <Dropdown
-                  fluid
-                  selection
-                  name="category"
-                  placeholder="Select Quiz Category"
-                  header="Select Quiz Category"
-                  options={CATEGORIES}
-                  value={category}
-                  onChange={(e, { value }) => setCategory(value)}
-                  disabled={processing}
-                />
-                <br />
-                <Dropdown
-                  fluid
-                  selection
-                  name="numOfQ"
-                  placeholder="Select No. of Questions"
-                  header="Select No. of Questions"
-                  options={NUM_OF_QUESTIONS}
-                  value={numOfQuestions}
-                  onChange={(e, { value }) => setNumOfQuestions(value)}
-                  disabled={processing}
-                />
-                <br />
-                <Dropdown
-                  fluid
-                  selection
-                  name="difficulty"
-                  placeholder="Select Difficulty Level"
-                  header="Select Difficulty Level"
-                  options={DIFFICULTY}
-                  value={difficulty}
-                  onChange={(e, { value }) => setDifficulty(value)}
-                  disabled={processing}
-                />
-                <br />
-                <Dropdown
-                  fluid
-                  selection
-                  name="type"
-                  placeholder="Select Questions Type"
-                  header="Select Questions Type"
-                  options={QUESTIONS_TYPE}
-                  value={questionsType}
-                  onChange={(e, { value }) => setQuestionsType(value)}
-                  disabled={processing}
-                />
-                <br />
-                <Dropdown
-                  search
-                  selection
-                  name="hours"
-                  placeholder="Select Hours"
-                  header="Select Hours"
-                  options={COUNTDOWN_TIME.hours}
-                  value={countdownTime.hours}
-                  onChange={handleTimeChange}
-                  disabled={processing}
-                />
-                <Dropdown
-                  search
-                  selection
-                  name="minutes"
-                  placeholder="Select Minutes"
-                  header="Select Minutes"
-                  options={COUNTDOWN_TIME.minutes}
-                  value={countdownTime.minutes}
-                  onChange={handleTimeChange}
-                  disabled={processing}
-                />
-                <Dropdown
-                  search
-                  selection
-                  name="seconds"
-                  placeholder="Select Seconds"
-                  header="Select Seconds"
-                  options={COUNTDOWN_TIME.seconds}
-                  value={countdownTime.seconds}
-                  onChange={handleTimeChange}
-                  disabled={processing}
-                />
-              </Item.Meta>
-              <Divider />
-              <Item.Extra>
-                <Button
-                  primary
-                  size="big"
-                  icon="play"
-                  labelPosition="left"
-                  content={processing ? 'Processing...' : 'Play Now'}
-                  onClick={fetchData}
-                  disabled={!allFieldsSelected || processing}
-                />
-              </Item.Extra>
-            </Item.Content>
-          </Item>
-        </Item.Group>
-      </Segment>
-      <br />
-    </Container>
-  );
-};
 
-Main.propTypes = {
-  startQuiz: PropTypes.func.isRequired,
+    <div className="main-cont">
+
+      <p>
+        <h1>Basic Instructions for Online Examinations:</h1>
+
+        <h3>  A. General information:</h3>
+
+        <div className="text-cont">
+          <ol>
+            <li>The examination will comprise of Objective type Multiple Choice Questions (MCQs)</li>
+            <li>All questions are compulsory and each carries One mark.</li>
+            <li>The total number of questions, duration of examination, will be different based on
+              the course, the detail is available on your screen.</li>
+            <li>The Subjects or topics covered in the exam will be as per the Syllabus.</li>
+            <li>There will be NO NEGATIVE MARKING for the wrong answers.</li>
+          </ol>
+        </div>
+
+        <h3>B. Information & Instructions:</h3>
+
+        <div className="text-cont">
+          <ol>
+            <li>The examination does not require using any paper, pen, pencil and calculator.</li>
+            <li>Every student will take the examination on a Laptop/Desktop/Smart Phone</li>
+            <li>On computer screen every student will be given objective type  Multiple Choice Questions (MCQs).</li>
+            <li>Each student will get questions and answers in different order selected randomlyfrom a fixed Question Databank.</li>
+            <li>The students just need to click on the Right Choice / Correct option from the
+              multiple choices /options given with each question. For Multiple Choice Questions,
+              each question has four options, and the candidate has to click the appropriate
+              option.</li>
+          </ol>
+        </div>
+      </p>
+
+      <Button
+        primary
+        size="big"
+        icon="play"
+        labelPosition="left"
+        content={processing ? 'Processing...' : 'Start Exam'}
+        onClick={fetchData}
+        disabled={processing}
+      />
+    </div>
+  );
 };
 
 export default Main;

@@ -4,9 +4,13 @@ import { Footer } from '../Footer/Footer'
 import { Container, Div1, Div2, Div3, Div4, Img, Img2, Span, Sub1, Sub2, Sub3, Sub4, Sub5, Sub6 } from './LandingSytle'
 export const Landing =() =>{
     const [test,setTest] = useState(false)
+    const [chat,setChat] = useState(false)
     if(test){
       return  <Redirect to='/testregister' />
     }
+    if(chat){
+        return  <Redirect to='/join' />
+      }
     return(
         <>
          <Container>
@@ -73,7 +77,7 @@ export const Landing =() =>{
                        </div>
                    </Sub6>
               </Sub5>
-              <Span><img src="https://i.pinimg.com/originals/ca/82/5c/ca825c18e2aa5b570b277cc2282597d0.gif" alt="blank" style={{width:"5rem",backgroundColor:"-moz-initial"}}></img></Span>
+              <Span onClick={()=>setChat(true)}><img src="https://i.pinimg.com/originals/ca/82/5c/ca825c18e2aa5b570b277cc2282597d0.gif" alt="blank" style={{width:"5rem",backgroundColor:"-moz-initial"}}></img></Span>
               <Footer/> 
          </Container>
         </>

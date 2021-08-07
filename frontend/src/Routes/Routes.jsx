@@ -1,10 +1,12 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
+import Feedback from "../Components/Feedback/Feedback";
 import { Landing } from "../Components/Landingpage/Landing";
 import Login from "../Components/Login/Login";
 import { Navbar } from "../Components/Navbar/Navbar";
 import { TestRegister } from "../Components/RegisterForTest/TestRegister";
 import Register from "../Components/SignUp/Register";
+import {QuizApp} from "../Components/Quiz Page/QuizApp/index";
 export const Routes = () => {
   return (
     <>
@@ -21,6 +23,12 @@ export const Routes = () => {
         </Route>
         <Route path="/new-login">
           <Login />
+        </Route>
+        <Route path="/feedback">
+          <Feedback />
+        </Route>
+        <Route path="/quiz">
+         <QuizApp></QuizApp>
         </Route>
       </Switch>
     </>

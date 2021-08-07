@@ -5,6 +5,8 @@ import Login from "../Components/Login/Login";
 import { Navbar } from "../Components/Navbar/Navbar";
 import { TestRegister } from "../Components/RegisterForTest/TestRegister";
 import Register from "../Components/SignUp/Register";
+import Join from '../Components/Chatbot/Join/Join.js'
+import Chat from '../Components/Chatbot/Chat/Chat.js'
 export const Routes = () => {
   return (
     <>
@@ -21,6 +23,12 @@ export const Routes = () => {
         </Route>
         <Route path="/new-login">
           <Login />
+        </Route>
+        <Route path='/join'>
+         <Join/>
+        </Route>
+        <Route path='/chat'>
+         <Chat/>
         </Route>
       </Switch>
     </>

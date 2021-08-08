@@ -17,6 +17,12 @@
   height: 100vh;
   padding: 5%;
 }
+.info {
+  margin: 4% 2%;
+}
+.info p {
+  font-size: 20px;
+}
 
 .profile img {
   border: 5px solid black;

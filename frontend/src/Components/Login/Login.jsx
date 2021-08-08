@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import logImage from "./../imgs/Mobile login-rafiki.png";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
-import axios from "axios";
 import style from "./Login.module.css";
-import { loginSuc, loginFail } from "../../Redux/LogIn/action";
+import { loginUser } from "../../Redux/LogIn/action";
 
 const Login = () => {
   const obj = {
@@ -30,16 +29,12 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:4000/login", loginDetails)
-      .then((res) => {
-        dispatch(loginSuc(loginDetails));
-        console.log(res.data.user);
-      })
-      .catch((err) => {
-        dispatch(loginFail());
-      });
-
+    const payload = {
+      email: email,
+      password: password,
+    };
+    dispatch(loginUser(payload));
+    
     if (loginDetails.email !== "" && loginDetails.password !== "") {
       let payload = {
         email: loginDetails.email,

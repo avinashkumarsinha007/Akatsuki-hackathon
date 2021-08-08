@@ -7,10 +7,10 @@ import { useDispatch, useSelector } from "react-redux";
 
 const Profile = () => {
   const dispatch = useDispatch();
+
   const email = useSelector((state) => state.login.email);
-  console.log(email);
-  const first_name = useSelector((state) => state.register.first_name);
-  console.log(first_name);
+  const username = useSelector((state) => state.register.first_name);
+  console.log(username);
 
   return (
     <div className={style.container}>

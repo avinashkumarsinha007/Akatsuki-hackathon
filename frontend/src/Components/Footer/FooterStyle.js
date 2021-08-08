@@ -9,6 +9,13 @@ export const Wrapper1 = styled.div`
   justify-content: center;
   align-items: center;
   column-gap: 3rem;
+  @media screen and (max-width:500px){
+  background-color: #3f414d;
+  color: #fff;
+  font-weight: 500;
+  width: 98.8vw;
+  display: block;
+  }
 `;
 
 export const DivOne = styled.div`
@@ -19,6 +26,13 @@ export const DivOne = styled.div`
   margin-left: 18rem;
 @media screen and (max-width:500px){
   margin-left: 1rem;
+  text-align: center;
+  .logoOne{
+   display: none;
+  }
+  .inputType{
+    padding: 5px 10px;
+  }
 }
   .logoOne {
     font-size: 1rem;
@@ -53,6 +67,9 @@ export const DivThree = styled.div`
     position: absolute;
     left: -2rem;
     top: 1px;
+  }
+  @media screen and (max-width:500px){
+    text-align: center;
   }
 `;
 

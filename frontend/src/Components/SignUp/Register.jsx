@@ -5,19 +5,7 @@ import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
 import style from "./Register.module.css";
 import { signupSuc, signupFail } from "../../Redux/SignUp/action";
-import firebase from "firebase";
 
-// const auth = firebase.auth();
-
-// const firebaseConfig = {
-//   apiKey: "AIzaSyAaJjebmyZ9VXENV8Kt_3uwtNrjc8UKa_k",
-//   authDomain: "akatsuki-e287a.firebaseapp.com",
-//   projectId: "akatsuki-e287a",
-//   storageBucket: "akatsuki-e287a.appspot.com",
-//   messagingSenderId: "1024210240630",
-//   appId: "1:1024210240630:web:14a8aa6333424ce804cb57",
-// };
-// firebase.initializeApp(firebaseConfig);
 const Register = () => {
   const obj = {
     first_name: "",
@@ -30,18 +18,6 @@ const Register = () => {
   const [query, setQuery] = useState(obj);
   const [done, setDone] = useState(false);
 
-  // const [user, setUser] = useState(null);
-
-  // useEffect(() => {
-  //   auth.onAuthStateChanged((person) => {
-  //     if (person) {
-  //       setUser(person);
-  //     } else {
-  //       setUser(null);
-  //     }
-  //   });
-  // }, []);
-
   const { first_name, last_name, email, password } = query;
 
   const handleChange = (e) => {
@@ -53,14 +29,6 @@ const Register = () => {
       [name]: val,
     });
   };
-
-  // const handleGoogleSignUp = async () => {
-  //   try {
-  //     await auth.signUpWithPopup(new firebase.auth.GoogleAuthProvider());
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
 
   const handleRegister = (e) => {
     axios
@@ -170,10 +138,7 @@ const Register = () => {
           </form>
 
           <div className={style.google_btn1}>
-            <button
-              class="ui google plus button"
-              // onClick={handleGoogleSignUp}
-            >
+            <button class="ui google plus button">
               <i class="google plus icon"></i>
               Google
             </button>

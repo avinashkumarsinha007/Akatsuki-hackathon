@@ -3,18 +3,15 @@ import React, { useState, useEffect } from "react";
 import bgImg from "../imgs/Profile data-rafiki.png";
 import profilePic from "../imgs/default.png";
 import style from "../CSS/Demo.module.css";
-import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 const Profile = () => {
-  const [data, setData] = useState(false);
-  const { id } = useParams();
+  const dispatch = useDispatch();
+  const email = useSelector((state) => state.login.email);
+  console.log(email);
+  const first_name = useSelector((state) => state.register.first_name);
+  console.log(first_name);
 
-  useEffect(() => {
-    axios.get(`http://localhost:4000/users/${id}`).then((res) => {
-      setData(res.data);
-      console.log(res.data);
-    });
-  }, [id]);
   return (
     <div className={style.container}>
       <div className={style.left_container}>
@@ -28,7 +25,7 @@ const Profile = () => {
           <p>Username</p>
           <h1>Prashanth Vengala</h1>
           <p>Email</p>
-          <h1>ps@gmail.com</h1>
+          <h1>{email}</h1>
         </div>
       </div>
     </div>

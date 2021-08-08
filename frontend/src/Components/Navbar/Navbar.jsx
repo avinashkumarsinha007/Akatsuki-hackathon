@@ -18,6 +18,7 @@ import { signupSuc } from "../../Redux/SignUp/action";
 import { loginSuc } from "../../Redux/LogIn/action";
 import { Link, Redirect } from "react-router-dom";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import ProfilePic from "../Profile/ProfilePic";
 
 export const Navbar = ({ them, handleToggle }) => {
   const [toggle, setToggle] = useState(false);
@@ -37,8 +38,9 @@ export const Navbar = ({ them, handleToggle }) => {
 
   const dispatch = useDispatch();
   const isAuth = useSelector((state) => state.login.isAuth);
-  const username = isAuth ? "Hello User" : "SignIn";
+  const username = isAuth ? "Prashanth" : "SignIn";
   const profile = isAuth ? "Profile" : "";
+  const pic = isAuth ? <ProfilePic /> : "";
 
   return (
     <>
@@ -55,10 +57,16 @@ export const Navbar = ({ them, handleToggle }) => {
           <Link to="about" style={{ textDecoration: "none", color: "inherit" }}>
             <h4>About</h4>
           </Link>
-          <Link to="our-impact" style={{ textDecoration: "none", color: "inherit" }}>
+          <Link
+            to="our-impact"
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
             <h4>Our Impact</h4>{" "}
           </Link>
-          <Link to="contact-us" style={{ textDecoration: "none", color: "inherit" }}>
+          <Link
+            to="contact-us"
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
             <h4>ContactUs</h4>
           </Link>
           <Link
@@ -73,6 +81,7 @@ export const Navbar = ({ them, handleToggle }) => {
           >
             <h4>{profile}</h4>
           </Link>
+          <div>{pic}</div>
         </ContainerTwo>
         <ContainerThree>
           <Button disableRipple onClick={handleChange}>

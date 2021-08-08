@@ -125,7 +125,8 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
                     primary
                     content="Next"
                     onClick={handleNext}
-                    floated="right"
+                    style={{marginLeft:"10%"}}
+                    // floated="right"
                     size="big"
                     icon="right chevron"
                     labelPosition="right"

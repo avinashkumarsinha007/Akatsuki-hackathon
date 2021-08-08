@@ -1,32 +1,40 @@
 import React, { useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import { Redirect } from "react-router";
-// import { register } from "../../Redux/Signup/action";
+import { useDispatch } from "react-redux";
 import { Footer } from '../Footer/Footer'
 import {Redirect, useLocation} from 'react-router-dom'
 import styles from "./Test.module.css";
 import queryString from 'query-string';
+import { sendtest } from "../../Redux/TestRegister/action";
 const init = {
   roll_no: "",
   time: "",
   profile_pict: "",
   user:"",
   date:"",
+  subject:""
 };
 
 export const TestRegister = () => {
   const [query, setQuery] = useState(init);
   const [redir,setRedir] = useState(false)
-  const { user,roll_no,date,profile_pict} = query;
-//   const dispatch = useDispatch();
-//   const Signup = useSelector((state) => state.Signup.Signup);
-//   const message = useSelector((state) => state.Signup.Signmessage);
+  const { user,time,subject,roll_no,date,profile_pict} = query;
+  const dispatch = useDispatch();
 const location = useLocation()
 const classes = queryString.parse(location.search);
 console.log(classes.class)
   const handleSubmit = (e) => {
     e.preventDefault();
     setRedir(true)
+    const payload = {
+      roll_no:roll_no,
+      class:classes.class,
+      profile_pict:profile_pict,
+      user:user,
+      data:date,
+      time:time,
+      subject:subject,
+    }
+    dispatch(sendtest(payload))
   };
 
   const handleChange = (e) => {
@@ -70,10 +78,23 @@ console.log(classes.class)
             </label><br/>
 
             <label className={styles.label}>
+              Subject
+              <input
+                type="text"
+                className={styles.inputField}
+                name="subject"
+                value={subject}
+                onChange={handleChange}
+                required
+              />
+            </label><br/>
+
+            <label className={styles.label}>
               Time 
               <input
-                type="time"
-                value="13:30"
+                type="text"
+                name="time"
+                value={time}
                 className={styles.inputField}
                 onChange={handleChange}
                 required

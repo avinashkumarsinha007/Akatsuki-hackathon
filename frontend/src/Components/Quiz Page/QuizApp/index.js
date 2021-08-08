@@ -57,7 +57,7 @@ export const QuizApp = () => {
     setLoading(true);
 
     setTimeout(() => {
-      setData(null);
+      setData(null); 
       setIsQuizStarted(false);
       setIsQuizCompleted(false);
       setResultData(null);

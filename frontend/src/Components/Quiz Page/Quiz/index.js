@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useRef, useState } from 'react';
 import {
   Container,
   Segment,
@@ -12,6 +11,7 @@ import {
   Header
 } from 'semantic-ui-react';
 import he from 'he';
+import "./quiz.css";
 
 import Countdown from '../Countdown';
 import { getLetter } from "../../../utils";
@@ -23,8 +23,11 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
   const [questionsAndAnswers, setQuestionsAndAnswers] = useState([]);
   const [timeTaken, setTimeTaken] = useState(null);
 
+// let inputRef = useRef(null);
+
+
   const handleItemClick = (e, { name }) => {
-    setUserSlectedAns(name);
+    setUserSlectedAns(name);  
   };
 
   const handleNext = () => {
@@ -68,13 +71,13 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
   return (
     <Item.Header>
       <Container>
-        <Segment>
+        <Segment className="quiz-cont" >
           <Item.Group divided>
             <Item>
               <Item.Content>
                 <Item.Extra>
                   <Header as="h1" block floated="left">
-                    <Icon name="info circle" />
+                    <Icon name="info circle" className="question-icon"/>
                     <Header.Content>
                       {`Question No.${questionIndex + 1} of ${data.length}`}
                     </Header.Content>
@@ -102,12 +105,14 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
 
                       return (
                         <Menu.Item
+                        className="option-input"
+                        type="button"
                           key={decodedOption}
                           name={decodedOption}
                           active={userSlectedAns === decodedOption}
                           onClick={handleItemClick}
                         >
-                          <b style={{ marginRight: '8px' }}>{letter}</b>
+                          <b style={{ marginRight: '8px'}}>{letter}</b>
                           {decodedOption}
                         </Menu.Item>
                       );
@@ -136,11 +141,4 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
     </Item.Header>
   );
 };
-
-Quiz.propTypes = {
-  data: PropTypes.array.isRequired,
-  countdownTime: PropTypes.number.isRequired,
-  endQuiz: PropTypes.func.isRequired
-};
-
 export default Quiz;

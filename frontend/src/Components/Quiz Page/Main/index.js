@@ -15,15 +15,15 @@ const Main = ({ startQuiz }) => {
   const fetchData = () => {
     setProcessing(true);
 
-    const API = `https://opentdb.com/api.php?amount=5`;
+   // const API = `https://opentdb.com/api.php?amount=5`;
+   const API = " http://localhost:4000/papers?subject=History&className=10"
 
     fetch(API)
       .then(respone => respone.json())
       .then(data =>
         setTimeout(() => {
-
           const { results } = data;
-
+          console.log(results)
           setProcessing(false);
 
           results.forEach(el => {
@@ -40,9 +40,11 @@ const Main = ({ startQuiz }) => {
         }, 1000)
       )
       .catch(error =>
+      
         setTimeout(() => {
           setProcessing(false);
           setError(error);
+          console.log(error)
         }
           , 1000)
       );

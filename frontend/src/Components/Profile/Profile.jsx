@@ -9,8 +9,8 @@ const Profile = () => {
   const dispatch = useDispatch();
 
   const email = useSelector((state) => state.login.email);
-  const username = useSelector((state) => state.register.first_name);
-  console.log(username);
+  const user = useSelector((state) => state.register.user);
+  console.log(user);
 
   return (
     <div className={style.container}>
@@ -23,7 +23,7 @@ const Profile = () => {
         </div>
         <div className={style.info}>
           <p>Username</p>
-          <h1>Prashanth Vengala</h1>
+          <h1>{user.last_name}</h1>
           <p>Email</p>
           <h1>{email}</h1>
         </div>

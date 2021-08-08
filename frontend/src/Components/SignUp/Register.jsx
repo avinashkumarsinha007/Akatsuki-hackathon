@@ -29,9 +29,7 @@ const Register = () => {
     });
   };
   const user = useSelector((state) => state.register.user);
-  console.log(user);
   const token = useSelector((state) => state.register.token);
-  console.log(token);
 
   const handleRegister = (e) => {
     e.preventDefault();

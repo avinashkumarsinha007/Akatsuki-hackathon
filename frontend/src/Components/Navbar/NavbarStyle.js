@@ -6,6 +6,7 @@ justify-content:space-between;
 top:0;
 position: sticky;
 padding: 1.5rem 0rem;
+z-index:3
 `
 
 export const ContainerOne = styled.div`

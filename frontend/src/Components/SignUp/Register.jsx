@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import logImage from "./../imgs/Secure login-rafiki.png";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
-import axios from "axios";
 import style from "./Register.module.css";
-import { signupSuc, signupFail } from "../../Redux/SignUp/action";
+import { registerUser } from "../../Redux/SignUp/action";
 
 const Register = () => {
   const obj = {
@@ -29,19 +28,20 @@ const Register = () => {
       [name]: val,
     });
   };
+  const user = useSelector((state) => state.register.user);
+  console.log(user);
+  const token = useSelector((state) => state.register.token);
+  console.log(token);
 
   const handleRegister = (e) => {
-    axios
-      .post("http://localhost:4000/users/register", query)
-      .then((res) => {
-        dispatch(signupSuc(query));
-        console.log(res);
-      })
-      .catch((err) => {
-        dispatch(signupFail);
-      });
-
     e.preventDefault();
+    const payload = {
+      first_name: first_name,
+      last_name: last_name,
+      email: email,
+      password: password,
+    };
+    dispatch(registerUser(payload));
 
     if (
       query.first_name !== "" &&
@@ -56,7 +56,6 @@ const Register = () => {
         password: query.password,
       };
       setQuery(payload);
-      alert("Registered Successfully");
       setDone(true);
     } else {
       if (query.first_name === "") {

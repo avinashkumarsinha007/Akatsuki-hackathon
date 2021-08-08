@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { Footer } from '../Footer/Footer'
 import {Redirect, useLocation} from 'react-router-dom'
 import styles from "./Test.module.css";
@@ -11,7 +11,7 @@ const init = {
   profile_pict: "",
   user:"",
   date:"",
-  subject:""
+  subject:"",
 };
 
 export const TestRegister = () => {
@@ -19,9 +19,10 @@ export const TestRegister = () => {
   const [redir,setRedir] = useState(false)
   const { user,time,subject,roll_no,date,profile_pict} = query;
   const dispatch = useDispatch();
+  const token = useSelector((state)=>state.register.token)
 const location = useLocation()
 const classes = queryString.parse(location.search);
-console.log(classes.class)
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setRedir(true)
@@ -33,7 +34,9 @@ console.log(classes.class)
       data:date,
       time:time,
       subject:subject,
+      token:token
     }
+    console.log(payload)
     dispatch(sendtest(payload))
   };
 

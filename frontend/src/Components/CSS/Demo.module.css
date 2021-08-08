@@ -1,0 +1,26 @@
+.container {
+  display: grid;
+  grid-template-columns: auto auto;
+  height: 100vh;
+  background: whitesmoke;
+  letter-spacing: 1px;
+}
+
+.left_container img {
+  padding: 0 0 5% 15%;
+  height: 100vh;
+}
+.right_container {
+  background: whitesmoke;
+  border-radius: 5px;
+  margin: 2% 10% 0 0;
+  height: 100vh;
+  padding: 5%;
+}
+
+.profile img {
+  border: 5px solid black;
+  padding: 2%;
+  border-radius: 50%;
+  margin: 5% 0;
+}

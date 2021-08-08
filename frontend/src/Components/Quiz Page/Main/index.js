@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from "axios";
 import {
   Button,
 } from 'semantic-ui-react';
@@ -10,27 +11,39 @@ import "./main.css"
 const Main = ({ startQuiz }) => {
 
   const [processing, setProcessing] = useState(false);
+ // const [processing, setProcessing] = useState(false);
   const [error, setError] = useState(false);
 
   const fetchData = () => {
     setProcessing(true);
 
-   // const API = `https://opentdb.com/api.php?amount=5`;
-   const API = " http://localhost:4000/papers?subject=History&className=10"
+    const API = `https://opentdb.com/api.php?amount=5`;
+  //const API = " http://localhost:4000/papers?subject=History&className=10"
 
     fetch(API)
       .then(respone => respone.json())
       .then(data =>
         setTimeout(() => {
-          const { results } = data;
-          console.log(results)
+            const  {results}  = data
+          console.log("result",data)
           setProcessing(false);
 
+          //  results.map((el) => {
+            
+          // el.option = shuffle([
+          //   el.correct_answer,
+          //   ...el.incorrect_answers,
+
+          // ]);
+          //  });
+
           results.forEach(el => {
+            console.log(el.options)
             el.options = shuffle([
               el.correct_answer,
               ...el.incorrect_answers,
             ]);
+            console.log(shuffle)
           });
 
 
@@ -49,6 +62,13 @@ const Main = ({ startQuiz }) => {
           , 1000)
       );
   };
+
+
+  useEffect(() => {
+    axios.get("http://localhost:4000/exams/610d434807a8be1f04714af2")
+    .then((res) => console.log("res",res.data))
+    .catch((err) => console.log(err))
+  },[]);
 
   return (
 

@@ -5,8 +5,9 @@ import { Container, Div1, Div2, Div3, Div4, Img, Img2, Span, Sub1, Sub2, Sub3, S
 export const Landing =() =>{
     const [test,setTest] = useState(false)
     const [chat,setChat] = useState(false)
+    const [classes,setClasses] = useState('')
     if(test){
-      return  <Redirect to='/testregister' />
+      return  <Redirect to={`/testregister?class=${classes}`} />
     }
     if(chat){
         return  <Redirect to='/join' />
@@ -16,11 +17,11 @@ export const Landing =() =>{
          <Container>
              <Sub1>
                  <Div1 onClick={()=>setTest(true)}>
-                     <p style={{marginTop:"1.2rem"}}>Secondary School</p>
+                     <p style={{marginTop:"1.2rem"}} onClick={()=>setClasses(10)}>Secondary School</p>
                  </Div1>
                  <p className="p1">Click here</p>
                  <Div2 onClick={()=>setTest(true)}>
-                     <p style={{marginTop:"1.2rem"}}>Senior School</p>
+                     <p style={{marginTop:"1.2rem"}}  onClick={()=>setClasses(12)}>Senior School</p>
                  </Div2>
                  <p className="p2">Click here</p>
              </Sub1>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button, Popup } from "semantic-ui-react";
 import Swal from 'sweetalert2';
 import { timeConverter } from "../../../utils";
-// import "./"
+import "./countdown.css";
 
 const Countdown = ({ timeOver, setTimeTaken }) => {
   const totalTime = 10800000;

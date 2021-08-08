@@ -2,7 +2,7 @@
 
 ![build](https://img.shields.io/travis/USER/REPO.svg) ![version](https://img.shields.io/badge/version-1.0.0-blue.svg)  
 <!--- ![Product Presentation Image](public/cover.png) --> 
-This is the project that We developed  during **Hackathon**. We are trying to build examination portal according to current suitation.Because of CBSE result many student are not satisfy with there result so we provide mock exam as CBSE conduct and try to help student in determining their Week point.
+This is the project that We developed  during **Hackathon**. We are trying to build examination portal according to current suitation.Because of CBSE result many student are not satisfy with there result so we provide mock exam as CBSE conduct and try to help student in determining their Weak point.
 
 # Table of Contents
 

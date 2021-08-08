@@ -24,8 +24,9 @@ export const loginFail = (payload) => {
 export const loginUser = (payload) => async (dispatch) => {
   dispatch(loginReq());
   try {
-    const res = await axios.post("http://localhost:4000/users/register", payload);
+    const res = await axios.post("http://localhost:4000/login", payload);
     dispatch(loginSuc(res.data));
+
   } catch (error) {
     dispatch(loginFail(error));
   }

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   Container,
   Segment,
@@ -22,7 +22,7 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
   const [userSlectedAns, setUserSlectedAns] = useState(null);
   const [questionsAndAnswers, setQuestionsAndAnswers] = useState([]);
   const [timeTaken, setTimeTaken] = useState(null);
-
+  const [hack,setHack] = useState(false)
 // let inputRef = useRef(null);
 
 
@@ -67,7 +67,14 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
       questionsAndAnswers
     });
   };
-
+ useEffect(()=>{
+  document.addEventListener("visibilitychange", function () {
+    document.title = document.visibilityState;
+    // console.log(document.visibilityState);//left the website
+    console.log(document.hidden,document.visibilityState);//true
+    setHack(document.hidden)
+    })
+ },[])
   return (
     <Item.Header>
       <Container>

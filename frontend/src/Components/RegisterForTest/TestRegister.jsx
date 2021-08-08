@@ -8,8 +8,7 @@ import { sendtest } from "../../Redux/TestRegister/action";
 const init = {
   roll_no: "",
   time: "",
-  profile_pict: "",
-  user:"",
+  users:"",
   date:"",
   subject:"",
 };
@@ -17,24 +16,23 @@ const init = {
 export const TestRegister = () => {
   const [query, setQuery] = useState(init);
   const [redir,setRedir] = useState(false)
-  const { user,time,subject,roll_no,date,profile_pict} = query;
+  const { users,time,subject,roll_no,date} = query;
   const dispatch = useDispatch();
-  const token = useSelector((state)=>state.register.token)
+  const user = useSelector((state) => state.login.user)
 const location = useLocation()
 const classes = queryString.parse(location.search);
-
+  // console.log(user.user._id,user.token)
   const handleSubmit = (e) => {
     e.preventDefault();
     setRedir(true)
     const payload = {
-      roll_no:roll_no,
+      roll_no:Number(roll_no.trim()),
       class:classes.class,
-      profile_pict:profile_pict,
-      user:user,
-      data:date,
+      user:user?.user._id,
+      date:date,
       time:time,
       subject:subject,
-      token:token
+      token:user?.token
     }
     console.log(payload)
     dispatch(sendtest(payload))
@@ -56,17 +54,17 @@ const classes = queryString.parse(location.search);
           <p>Clearly fill the form below and ensure to indicate the class registered for</p>
           <hr className={styles.hori} />
           <form onSubmit={handleSubmit}>
-            <label className={styles.label}>
+            {/* <label className={styles.label}>
               Username{" "}
               <input
                 type="text"
                 className={styles.inputField}
-                name="user"
-                value={user}
+                name="users"
+                value={users}
                 onChange={handleChange}
                 required
               />
-            </label><br/>
+            </label><br/> */}
 
             <label className={styles.label}>
               RollNo
@@ -114,7 +112,7 @@ const classes = queryString.parse(location.search);
                 required
               />
             </label><br/>
-            <label className={styles.label}>
+            {/* <label className={styles.label}>
               upload 
               <input
                 type="file"
@@ -124,7 +122,7 @@ const classes = queryString.parse(location.search);
                 onChange={handleChange}
                 required
               />
-            </label><br/>
+            </label><br/> */}
             <input
               type="submit"
               value="Signup"

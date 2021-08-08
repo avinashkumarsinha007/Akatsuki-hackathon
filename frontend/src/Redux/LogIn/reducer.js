@@ -5,7 +5,7 @@ const initState = {
   isAuth: false,
   isLoading: false,
   isError: false,
-  user: {},
+  user: '',
   error: "",
 };
 export const LoginReducer = (state = initState, action) => {
@@ -24,6 +24,7 @@ export const LoginReducer = (state = initState, action) => {
         isAuth: true,
         isLoading: false,
         isError: false,
+        user:payload
       };
     case LOGIN_FAILURE:
       return {

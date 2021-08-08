@@ -61,6 +61,7 @@ const { register, login } = require("../controllers/auth.controller");
 
 const registerExamController = require("../controllers/exam.controller");
 const paperController = require("../controllers/paper.controller");
+const resultController = require("../controllers/result.controller");
 // const upload = require("../middleware/upload");
 
 app.use("/uploads",express.static("uploads"))
@@ -69,6 +70,7 @@ app.use("/login", login);
 app.use('/users', userController);
 
 app.use("/exams", registerExamController);
-app.use("/papers",paperController)
+app.use("/papers", paperController);
+app.use("/results", resultController);
 module.exports = server;
 

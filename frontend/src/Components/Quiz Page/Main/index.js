@@ -55,7 +55,7 @@ useEffect(() => {
 
     setProcessing(true);
 
-  const API = " http://localhost:4000/papers?subject=History&className=10"
+  const API = "http://localhost:4000/papers?subject=History&className=10"
 
     fetch(API)
       .then(respone => respone.json())

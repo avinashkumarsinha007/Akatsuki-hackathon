@@ -18,6 +18,7 @@ const Result = ({
     setActiveTab(name);
   };
 
+
   return (
     <Container className="main-cont">
       <Menu fluid widths={2}>

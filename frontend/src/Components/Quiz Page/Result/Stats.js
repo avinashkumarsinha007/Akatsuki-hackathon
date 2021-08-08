@@ -12,6 +12,8 @@ const Stats = ({
   const { grade, remarks } = calculateGrade(score);
   const { hours, minutes, seconds } = timeConverter(timeTaken);
 
+  console.log("correct ans",correctAnswers)
+
   return (
     <Segment>
       <Header as="h1" textAlign="center" block>

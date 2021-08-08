@@ -11,31 +11,59 @@ import "./main.css"
 const Main = ({ startQuiz }) => {
 
   const [processing, setProcessing] = useState(false);
- // const [processing, setProcessing] = useState(false);
+  const [userData,setUserdata] = useState({});
   const [error, setError] = useState(false);
+  const [date,setDate] = useState("2021-08-08");
+
+  
+  let currentDate = new Date();
+const [value, setValue] = React.useState(currentDate.toLocaleDateString());
+const [time,setTime] = useState(currentDate.toLocaleTimeString());
+
+useEffect(() => {
+
+  let newValue = value.trim().split("/").map(Number);
+
+  if(newValue[0] < 10) {
+    newValue[0] = "0"+String(newValue[0]);
+  };
+
+  if(newValue[1] < 10) {
+    newValue[1] = "0"+String(newValue[1]);
+  };
+
+  let updatedStr = newValue[2] + "-" + newValue[1] + "-" + newValue[0];
+  setValue(updatedStr);
+
+},[]);
+
+  const handleClick = () => {
+
+    console.log(value,time)
+
+    if(date === value) {
+      fetchData()
+    }
+
+    else {
+      alert(`Exam is yet to start, exam Date is:-${date}`)
+      setProcessing(false)
+    }
+  }
 
   const fetchData = () => {
+
     setProcessing(true);
 
-    const API = `https://opentdb.com/api.php?amount=5`;
-  //const API = " http://localhost:4000/papers?subject=History&className=10"
+  const API = " http://localhost:4000/papers?subject=History&className=10"
 
     fetch(API)
       .then(respone => respone.json())
       .then(data =>
         setTimeout(() => {
-            const  {results}  = data
-          console.log("result",data)
+            const  results  = data[0].paper;
+          console.log("result",data[0].paper)
           setProcessing(false);
-
-          //  results.map((el) => {
-            
-          // el.option = shuffle([
-          //   el.correct_answer,
-          //   ...el.incorrect_answers,
-
-          // ]);
-          //  });
 
           results.forEach(el => {
             console.log(el.options)
@@ -43,7 +71,7 @@ const Main = ({ startQuiz }) => {
               el.correct_answer,
               ...el.incorrect_answers,
             ]);
-            console.log(shuffle)
+          
           });
 
 
@@ -66,8 +94,11 @@ const Main = ({ startQuiz }) => {
 
   useEffect(() => {
     axios.get("http://localhost:4000/exams/610d434807a8be1f04714af2")
-    .then((res) => console.log("res",res.data))
-    .catch((err) => console.log(err))
+    .then((res) => {
+      setUserdata(res.data.exam[0]);
+      console.log(res.data.exam[0])
+    })
+    .catch((err) => console.log(err));
   },[]);
 
   return (
@@ -112,7 +143,7 @@ const Main = ({ startQuiz }) => {
         icon="play"
         labelPosition="left"
         content={processing ? 'Processing...' : 'Start Exam'}
-        onClick={fetchData}
+        onClick={handleClick}
         disabled={processing}
       />
     </div>

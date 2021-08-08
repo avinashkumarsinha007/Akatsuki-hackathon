@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button, Popup } from "semantic-ui-react";
 import Swal from 'sweetalert2';
 import { timeConverter } from "../../../utils";
+// import "./"
 
 const Countdown = ({ timeOver, setTimeTaken }) => {
   const totalTime = 10800000;
@@ -34,7 +35,7 @@ const Countdown = ({ timeOver, setTimeTaken }) => {
   }, [timerTime]);
 
   return (
-    <Button.Group size="massive" basic floated="right">
+    <Button.Group size="massive" basic floated="right" className="button-group">
       <Popup
         content="Hours"
         trigger={<Button active>{hours}</Button>}

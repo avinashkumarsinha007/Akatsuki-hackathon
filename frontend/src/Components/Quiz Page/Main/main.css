@@ -1,4 +1,25 @@
-.main-cont{
-    margin-top: 5%;
-    
+*{
+    box-sizing: border-box;
 }
+
+.main-cont{
+    width: 65%;
+    height:auto;
+    padding-left: 4%;
+    padding-right: 4%;
+    padding-top: 4%;
+    padding-bottom: 4%;
+    margin:auto;
+    text-align: center;
+    background-color: #eceff1;
+    /* margin-top: 6% !important; */
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+}
+
+.text-cont{
+    text-align: left;
+}
+ol {
+    list-style-position: inside !important;
+    line-height: 1.7;
+  }

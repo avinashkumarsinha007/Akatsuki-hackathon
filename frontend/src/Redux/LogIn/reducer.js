@@ -20,7 +20,6 @@ export const LoginReducer = (state = initState, action) => {
     case LOGIN_SUCCESS:
       return {
         ...state,
-        ...payload,
         isAuth: true,
         isLoading: false,
         isError: false,

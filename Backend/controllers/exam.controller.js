@@ -11,7 +11,7 @@ router.post("/",upload.single("profile_pict"),protect, async (req, res) => {
         const exam = await Exam.create({
             roll_no: req.body.roll_no,
             class:req.body.class,
-            profile_pict:req.file.path ,
+            // profile_pict:req.file.path ,
             user :req.body.user,
             date: req.body.date,
             time:req.body.time,

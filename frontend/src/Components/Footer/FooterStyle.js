@@ -3,12 +3,19 @@ import styled from "styled-components";
 export const Wrapper1 = styled.div`
   background-color: #3f414d;
   color: #fff;
-  font-weight: 900;
+  font-weight: 700;
   width: 98.8vw;
   display: flex;
   justify-content: center;
   align-items: center;
   column-gap: 3rem;
+  @media screen and (max-width:500px){
+  background-color: #3f414d;
+  color: #fff;
+  font-weight: 500;
+  width: 98.8vw;
+  display: block;
+  }
 `;
 
 export const DivOne = styled.div`
@@ -19,12 +26,20 @@ export const DivOne = styled.div`
   margin-left: 18rem;
 @media screen and (max-width:500px){
   margin-left: 1rem;
+  text-align: center;
+  .logoOne{
+   display: none;
+  }
+  .inputType{
+    padding: 5px 10px;
+  }
 }
   .logoOne {
     font-size: 1rem;
     position: absolute;
-    left: -30px;
-    top: 18px;
+    color: #fff;
+    left: 16rem;
+
   }
   .inputType {
     border: none;
@@ -51,7 +66,10 @@ export const DivThree = styled.div`
   .logoFive {
     position: absolute;
     left: -2rem;
-    top: 15px;
+    top: 1px;
+  }
+  @media screen and (max-width:500px){
+    text-align: center;
   }
 `;
 
@@ -60,7 +78,7 @@ export const Wrapper3 = styled.div`
   width: 98.8vw;
   justify-content: space-evenly;
   align-items: center;
-  padding: 40px 0px;
+  padding: 20px 0px;
   font-weight: 900;
   font-size: 14px;
   .logo {
@@ -82,6 +100,7 @@ export const Wrapper4 = styled.div`
     display: flex;
     justify-content: center;
     column-gap: 30px;
+    margin-bottom: 1rem;
   }
   .policy2 {
     font-size: 12px;

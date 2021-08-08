@@ -1,0 +1,27 @@
+.container {
+  height: 100vh;
+  background: whitesmoke;
+  letter-spacing: 1px;
+}
+
+.left_container img {
+  height: 100vh;
+  margin-left: 25%;
+}
+.contact {
+  width: 100%;
+}
+.heading h1 {
+  text-align: center;
+}
+.image {
+  display: grid;
+  margin: 30px;
+  grid-template-columns: auto auto auto auto;
+}
+.image img {
+  margin: 20px;
+}
+.image h2 {
+  text-align: center;
+}

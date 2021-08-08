@@ -2,10 +2,10 @@ import { loadData, saveData } from "../../utils/localstorage";
 import { LOGIN_FAILURE, LOGIN_REQ, LOGIN_SUCCESS, LOG_OUT } from "./actionType";
 
 const initState = {
-  isAuth: false || loadData("auth"),
+  isAuth: false,
   isLoading: false,
   isError: false,
-  user: {} || loadData("user"),
+  user: {},
   error: "",
 };
 export const LoginReducer = (state = initState, action) => {
@@ -17,17 +17,14 @@ export const LoginReducer = (state = initState, action) => {
         ...state,
         isLoading: true,
       };
-    case LOGIN_SUCCESS: {
-      saveData("user", payload);
-      saveData("auth", true);
-      const dataLocal = {
+    case LOGIN_SUCCESS:
+      return {
         ...state,
-        isLoading: false,
+        ...payload,
         isAuth: true,
-        user: payload,
+        isLoading: false,
+        isError: false,
       };
-      return dataLocal;
-    }
     case LOGIN_FAILURE:
       return {
         ...state,

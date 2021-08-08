@@ -23,13 +23,11 @@ export const loginFail = (payload) => {
 
 export const loginUser = (payload) => async (dispatch) => {
   dispatch(loginReq());
-  axios
-    .post("http://localhost:4000/login", payload)
-    .then((res) => {
-      dispatch(loginSuc(res.data.user));
-      console.log(res.data.user);
-    })
-    .catch((err) => {
-      dispatch(loginFail());
-    });
+  try {
+    const res = await axios.post("http://localhost:4000/login", payload);
+    dispatch(loginSuc(res.data));
+
+  } catch (error) {
+    dispatch(loginFail(error));
+  }
 };

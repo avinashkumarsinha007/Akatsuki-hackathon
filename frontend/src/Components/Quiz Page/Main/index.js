@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
+import { useSelector } from 'react-redux';
+import queryString from 'query-string';
+import { useLocation } from 'react-router';
 import {
   Button,
 } from 'semantic-ui-react';
@@ -13,13 +16,16 @@ const Main = ({ startQuiz }) => {
   const [processing, setProcessing] = useState(false);
   const [userData,setUserdata] = useState({});
   const [error, setError] = useState(false);
-  const [date,setDate] = useState("2021-08-08");
-
-  
+  const [date,setDate] = useState("");
+  const user = useSelector((state) => state.login.user)
+  const location  = useLocation()
+  const classes = queryString.parse(location.search);
   let currentDate = new Date();
 const [value, setValue] = React.useState(currentDate.toLocaleDateString());
 const [time,setTime] = useState(currentDate.toLocaleTimeString());
-
+// const [examDate,setExamDate] = useState({})
+// console.log(user.user._id)
+ const valu1 = classes.classes.trim()
 useEffect(() => {
 
   let newValue = value.trim().split("/").map(Number);
@@ -27,7 +33,7 @@ useEffect(() => {
   if(newValue[0] < 10) {
     newValue[0] = "0"+String(newValue[0]);
   };
-
+   
   if(newValue[1] < 10) {
     newValue[1] = "0"+String(newValue[1]);
   };
@@ -37,11 +43,12 @@ useEffect(() => {
 
 },[]);
 
+
   const handleClick = () => {
 
     console.log(value,time)
 
-    if(date === value) {
+    if(date.trim() === value) {
       fetchData()
     }
 
@@ -55,7 +62,7 @@ useEffect(() => {
 
     setProcessing(true);
 
-  const API = "http://localhost:4000/papers?subject=History&className=10"
+  const API = `http://localhost:4000/papers?subject=History&className=${valu1}`
 
     fetch(API)
       .then(respone => respone.json())
@@ -90,16 +97,18 @@ useEffect(() => {
           , 1000)
       );
   };
-
-
+  console.log(user)
   useEffect(() => {
-    axios.get("http://localhost:4000/exams/610d434807a8be1f04714af2")
+    axios.get(`http://localhost:4000/exams/${user?.user?._id}`)
     .then((res) => {
+      console.log(res.data)
+      setDate(res.data.exam[0].date)
       setUserdata(res.data.exam[0]);
       console.log(res.data.exam[0])
+      console.log(res.data.exam[0].date)
     })
     .catch((err) => console.log(err));
-  },[]);
+  },[user?.user?._id]);
 
   return (
 

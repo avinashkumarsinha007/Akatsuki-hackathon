@@ -25,7 +25,6 @@ export const failuretest = () => {
 };
 
 export const sendtest = (payload) => (dispatch) => {
-   console.log(payload)
   dispatch(posttest());
   axios
     .post(

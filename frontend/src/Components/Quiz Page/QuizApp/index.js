@@ -6,14 +6,12 @@ import Main from '../Main';
 import Quiz from '../Quiz';
 import Result from '../Result';
 import { shuffle } from "../../../utils";
-
 export const QuizApp = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(null);
   const [isQuizStarted, setIsQuizStarted] = useState(false);
   const [isQuizCompleted, setIsQuizCompleted] = useState(false);
   const [resultData, setResultData] = useState(null);
-
   const startQuiz = (data) => {
     setLoading(true);
 

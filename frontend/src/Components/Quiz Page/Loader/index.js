@@ -1,14 +1,14 @@
 import React from 'react';
 import { Container, Message, Icon } from 'semantic-ui-react';
+import "./loader.css";
 
 const Loader = () => {
   return (
-    <Container>
-      <Message icon size="big">
+    <Container className="loader-cont">
+      <Message icon size="big"  className="loader-text-cont">
         <Icon name="circle notched" loading />
         <Message.Content>
-          <Message.Header>Just one second</Message.Header>
-          We are fetching that content for you.
+          <Message.Header style={{marginTop:"15px"}}>Processing....</Message.Header>
         </Message.Content>
       </Message>
     </Container>

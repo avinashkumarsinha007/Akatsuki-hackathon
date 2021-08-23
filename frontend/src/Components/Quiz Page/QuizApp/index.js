@@ -6,18 +6,14 @@ import Main from '../Main';
 import Quiz from '../Quiz';
 import Result from '../Result';
 import { shuffle } from "../../../utils";
-
 export const QuizApp = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(null);
-  const [countdownTime, setCountdownTime] = useState(null);
   const [isQuizStarted, setIsQuizStarted] = useState(false);
   const [isQuizCompleted, setIsQuizCompleted] = useState(false);
   const [resultData, setResultData] = useState(null);
-
-  const startQuiz = (data, countdownTime) => {
+  const startQuiz = (data) => {
     setLoading(true);
-    setCountdownTime(countdownTime);
 
     setTimeout(() => {
       setData(data);
@@ -59,8 +55,7 @@ export const QuizApp = () => {
     setLoading(true);
 
     setTimeout(() => {
-      setData(null);
-      setCountdownTime(null);
+      setData(null); 
       setIsQuizStarted(false);
       setIsQuizCompleted(false);
       setResultData(null);
@@ -75,7 +70,7 @@ export const QuizApp = () => {
         <Main startQuiz={startQuiz} />
       )}
       {!loading && isQuizStarted && (
-        <Quiz data={data} countdownTime={countdownTime} endQuiz={endQuiz} />
+        <Quiz data={data} endQuiz={endQuiz} />
       )}
       {!loading && isQuizCompleted && (
         <Result {...resultData} replayQuiz={replayQuiz} resetQuiz={resetQuiz} />

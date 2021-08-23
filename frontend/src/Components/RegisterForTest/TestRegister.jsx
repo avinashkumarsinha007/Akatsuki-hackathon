@@ -1,27 +1,41 @@
 import React, { useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import { Redirect } from "react-router";
-// import { register } from "../../Redux/Signup/action";
+import { useDispatch,useSelector } from "react-redux";
 import { Footer } from '../Footer/Footer'
+import {Redirect, useLocation} from 'react-router-dom'
 import styles from "./Test.module.css";
+import queryString from 'query-string';
+import { sendtest } from "../../Redux/TestRegister/action";
 const init = {
   roll_no: "",
-  classes: "",
-  profile_pict: "",
-  user:"",
+  time: "",
+  users:"",
   date:"",
-  time:""
+  subject:"",
 };
 
 export const TestRegister = () => {
   const [query, setQuery] = useState(init);
-  const { user,roll_no,classes,date,profile_pict} = query;
-//   const dispatch = useDispatch();
-//   const Signup = useSelector((state) => state.Signup.Signup);
-//   const message = useSelector((state) => state.Signup.Signmessage);
+  const [redir,setRedir] = useState(false)
+  const { users,time,subject,roll_no,date} = query;
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.login.user)
+const location = useLocation()
+const classes = queryString.parse(location.search);
+  // console.log(user.user._id,user.token)
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+    setRedir(true)
+    const payload = {
+      roll_no:Number(roll_no.trim()),
+      class:classes.class,
+      user:user?.user._id,
+      date:date,
+      time:time,
+      subject:subject,
+      token:user?.token
+    }
+    console.log(payload)
+    dispatch(sendtest(payload))
   };
 
   const handleChange = (e) => {
@@ -29,7 +43,10 @@ export const TestRegister = () => {
     const update = { ...query, [name]: value };
     setQuery(update);
   };
- //Redirect to Signup page
+ //Redirect to Test page
+ if(redir){
+   return <Redirect to={`/quiz?classes=${classes.class}`} />
+ }
   return (
     <>
         <div className={styles.container1}>
@@ -37,17 +54,17 @@ export const TestRegister = () => {
           <p>Clearly fill the form below and ensure to indicate the class registered for</p>
           <hr className={styles.hori} />
           <form onSubmit={handleSubmit}>
-            <label className={styles.label}>
+            {/* <label className={styles.label}>
               Username{" "}
               <input
                 type="text"
                 className={styles.inputField}
-                name="user"
-                value={user}
+                name="users"
+                value={users}
                 onChange={handleChange}
                 required
               />
-            </label><br/>
+            </label><br/> */}
 
             <label className={styles.label}>
               RollNo
@@ -62,12 +79,24 @@ export const TestRegister = () => {
             </label><br/>
 
             <label className={styles.label}>
-              Class 
+              Subject
               <input
                 type="text"
                 className={styles.inputField}
-                name="classes"
-                value={classes}
+                name="subject"
+                value={subject}
+                onChange={handleChange}
+                required
+              />
+            </label><br/>
+
+            <label className={styles.label}>
+              Time 
+              <input
+                type="text"
+                name="time"
+                value={time}
+                className={styles.inputField}
                 onChange={handleChange}
                 required
               />
@@ -83,7 +112,7 @@ export const TestRegister = () => {
                 required
               />
             </label><br/>
-            <label className={styles.label}>
+            {/* <label className={styles.label}>
               upload 
               <input
                 type="file"
@@ -93,7 +122,7 @@ export const TestRegister = () => {
                 onChange={handleChange}
                 required
               />
-            </label><br/>
+            </label><br/> */}
             <input
               type="submit"
               value="Signup"

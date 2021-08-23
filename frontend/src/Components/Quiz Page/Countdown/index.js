@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { Button, Popup } from "semantic-ui-react";
 import Swal from 'sweetalert2';
-
 import { timeConverter } from "../../../utils";
+import "./countdown.css";
 
-const Countdown = ({ countdownTime, timeOver, setTimeTaken }) => {
-  const totalTime = countdownTime * 1000;
+const Countdown = ({ timeOver, setTimeTaken }) => {
+  const totalTime = 10800000;
   const [timerTime, setTimerTime] = useState(totalTime);
   const { hours, minutes, seconds } = timeConverter(timerTime);
 
@@ -33,11 +32,10 @@ const Countdown = ({ countdownTime, timeOver, setTimeTaken }) => {
       setTimeTaken(totalTime - timerTime + 1000);
     };
 
-    // eslint-disable-next-line
   }, [timerTime]);
 
   return (
-    <Button.Group size="massive" basic floated="right">
+    <Button.Group size="massive" basic floated="right" className="button-group">
       <Popup
         content="Hours"
         trigger={<Button active>{hours}</Button>}
@@ -55,12 +53,6 @@ const Countdown = ({ countdownTime, timeOver, setTimeTaken }) => {
       />
     </Button.Group>
   );
-};
-
-Countdown.propTypes = {
-  countdownTime: PropTypes.number.isRequired,
-  timeOver: PropTypes.func.isRequired,
-  setTimeTaken: PropTypes.func.isRequired
 };
 
 export default Countdown;

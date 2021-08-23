@@ -1,0 +1,18 @@
+.quiz-cont{
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px !important;
+    background-color: #eceff1 !important;
+    margin-top: 20px !important;
+}
+
+.question-icon{
+    color: #2185D0;
+}
+
+.option-input[type="button"]:hover{
+    background-color: #1F82CD !important;
+}
+
+.option-input:active{
+    background-color: #e9f1f7 !important;
+}
+

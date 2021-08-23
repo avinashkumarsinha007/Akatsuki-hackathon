@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { Container, Menu } from 'semantic-ui-react';
 import "./result.css";
 
@@ -11,7 +10,6 @@ const Result = ({
   correctAnswers,
   timeTaken,
   questionsAndAnswers,
-  replayQuiz,
   resetQuiz
 }) => {
   const [activeTab, setActiveTab] = useState('Stats');
@@ -19,6 +17,7 @@ const Result = ({
   const handleTabClick = (e, { name }) => {
     setActiveTab(name);
   };
+
 
   return (
     <Container className="main-cont">
@@ -39,7 +38,6 @@ const Result = ({
           totalQuestions={totalQuestions}
           correctAnswers={correctAnswers}
           timeTaken={timeTaken}
-          replayQuiz={replayQuiz}
           resetQuiz={resetQuiz}
         />
       )}
@@ -47,15 +45,6 @@ const Result = ({
       <br />
     </Container>
   );
-};
-
-Result.propTypes = {
-  totalQuestions: PropTypes.number.isRequired,
-  correctAnswers: PropTypes.number.isRequired,
-  timeTaken: PropTypes.number.isRequired,
-  questionsAndAnswers: PropTypes.array.isRequired,
-  replayQuiz: PropTypes.func.isRequired,
-  resetQuiz: PropTypes.func.isRequired
 };
 
 export default Result;

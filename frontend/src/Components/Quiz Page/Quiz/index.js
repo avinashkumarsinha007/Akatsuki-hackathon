@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   Container,
   Segment,
@@ -12,6 +11,7 @@ import {
   Header
 } from 'semantic-ui-react';
 import he from 'he';
+import "./quiz.css";
 
 import Countdown from '../Countdown';
 import { getLetter } from "../../../utils";
@@ -22,9 +22,12 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
   const [userSlectedAns, setUserSlectedAns] = useState(null);
   const [questionsAndAnswers, setQuestionsAndAnswers] = useState([]);
   const [timeTaken, setTimeTaken] = useState(null);
+  const [hack,setHack] = useState(false)
+// let inputRef = useRef(null);
+
 
   const handleItemClick = (e, { name }) => {
-    setUserSlectedAns(name);
+    setUserSlectedAns(name);  
   };
 
   const handleNext = () => {
@@ -64,17 +67,24 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
       questionsAndAnswers
     });
   };
-
+ useEffect(()=>{
+  document.addEventListener("visibilitychange", function () {
+    document.title = document.visibilityState;
+    // console.log(document.visibilityState);//left the website
+    console.log(document.hidden,document.visibilityState);//true
+    setHack(document.hidden)
+    })
+ },[])
   return (
     <Item.Header>
       <Container>
-        <Segment>
+        <Segment className="quiz-cont" >
           <Item.Group divided>
             <Item>
               <Item.Content>
                 <Item.Extra>
                   <Header as="h1" block floated="left">
-                    <Icon name="info circle" />
+                    <Icon name="info circle" className="question-icon"/>
                     <Header.Content>
                       {`Question No.${questionIndex + 1} of ${data.length}`}
                     </Header.Content>
@@ -102,12 +112,14 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
 
                       return (
                         <Menu.Item
+                        className="option-input"
+                        type="button"
                           key={decodedOption}
                           name={decodedOption}
                           active={userSlectedAns === decodedOption}
                           onClick={handleItemClick}
                         >
-                          <b style={{ marginRight: '8px' }}>{letter}</b>
+                          <b style={{ marginRight: '8px'}}>{letter}</b>
                           {decodedOption}
                         </Menu.Item>
                       );
@@ -120,7 +132,8 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
                     primary
                     content="Next"
                     onClick={handleNext}
-                    floated="right"
+                    style={{marginLeft:"10%"}}
+                    // floated="right"
                     size="big"
                     icon="right chevron"
                     labelPosition="right"
@@ -136,11 +149,4 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
     </Item.Header>
   );
 };
-
-Quiz.propTypes = {
-  data: PropTypes.array.isRequired,
-  countdownTime: PropTypes.number.isRequired,
-  endQuiz: PropTypes.func.isRequired
-};
-
 export default Quiz;

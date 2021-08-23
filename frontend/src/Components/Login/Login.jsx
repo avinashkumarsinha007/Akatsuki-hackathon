@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import "./Login.css";
 import logImage from "./../imgs/Mobile login-rafiki.png";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
-import axios from "axios";
-import { loginSuc, loginFail } from "../../Redux/LogIn/action";
+import style from "./Login.module.css";
+import { loginUser } from "../../Redux/LogIn/action";
 
 const Login = () => {
   const obj = {
@@ -16,6 +15,7 @@ const Login = () => {
   const { email, password } = loginDetails;
 
   const dispatch = useDispatch();
+  const isAuth = useSelector((state) => state.login.isAuth);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -27,29 +27,38 @@ const Login = () => {
     });
   };
 
-  const handleLogin = () => {
-    axios
-      .post("http://localhost:4000/login", loginDetails)
-      .then((res) => {
-        console.log(res);
-        dispatch(loginSuc(loginDetails));
-      })
-      .catch((err) => {
-        dispatch(loginFail());
-      });
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const payload = {
+      email: email,
+      password: password,
+    };
+    dispatch(loginUser(payload));
+    
+    if (loginDetails.email !== "" && loginDetails.password !== "") {
+      let payload = {
+        email: loginDetails.email,
+        password: loginDetails.password,
+      };
+      setLogin(payload);
+    }
   };
+
+  if (isAuth) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <>
-      <div className="container">
-        <div className="left-container">
+      <div className={style.container}>
+        <div className={style.left_container}>
           <img src={logImage} alt="img" />
         </div>
-        <div className="right-container">
-          <div className="heading">
+        <div className={style.right_container}>
+          <div className={style.heading}>
             <p>Login Here</p>
             <br />
-            Already registered?
+            Not registered?
             <Link
               to="/new-register"
               style={{ textDecoration: "none", color: "blue", padding: 5 }}
@@ -59,7 +68,7 @@ const Login = () => {
             here
           </div>
           <div>
-            <form class="ui form">
+            <form class="ui form" className={style.form}>
               <div class="field">
                 <label>Email</label>
                 <input
@@ -90,7 +99,7 @@ const Login = () => {
                 <span>Or</span>
               </p>
             </div> */}
-            <div className="google-btn1">
+            <div className={style.google_btn1}>
               <button class="ui google plus button">
                 <i class="google plus icon"></i>
                 Google

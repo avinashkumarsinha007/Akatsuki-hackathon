@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Table } from 'semantic-ui-react';
 
 const QNA = ({ questionsAndAnswers }) => {
@@ -27,10 +26,6 @@ const QNA = ({ questionsAndAnswers }) => {
       </Table.Body>
     </Table>
   );
-};
-
-QNA.propTypes = {
-  questionsAndAnswers: PropTypes.array.isRequired
 };
 
 export default QNA;

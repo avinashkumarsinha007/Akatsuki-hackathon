@@ -6,8 +6,8 @@ const upload = require("../middleware/upload");
 const protect = require("../middleware/protect")
 
 router.post("/",upload.single("profile_pict"),protect, async (req, res) => {
-    // try
-    // {
+    try
+    {
         const exam = await Exam.create({
             roll_no: req.body.roll_no,
             class:req.body.class,
@@ -19,11 +19,11 @@ router.post("/",upload.single("profile_pict"),protect, async (req, res) => {
             subject:req.body.subject
         })
         res.status(200).json({ exam: exam });
-    // }
-    // catch
-    // {
-    //     res.status(400).json({ message:"Bad request"});
-    // }
+    }
+    catch
+    {
+        res.status(400).json({ message:"Bad request"});
+    }
 });
 router.patch("/:id",upload.single("profile_pict"),protect, async (req, res) => {
     try

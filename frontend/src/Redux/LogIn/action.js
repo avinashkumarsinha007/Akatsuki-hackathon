@@ -24,7 +24,7 @@ export const loginFail = (payload) => {
 export const loginUser = (payload) => async (dispatch) => {
   dispatch(loginReq());
   try {
-    const res = await axios.post("http://localhost:4000/login", payload);
+    const res = await axios.post("https://hackaton-ed.herokuapp.com/login", payload);
     dispatch(loginSuc(res.data));
 
   } catch (error) {

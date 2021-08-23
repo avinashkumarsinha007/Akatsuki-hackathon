@@ -25,6 +25,7 @@ const [value, setValue] = React.useState(currentDate.toLocaleDateString());
 const [time,setTime] = useState(currentDate.toLocaleTimeString());
 // const [examDate,setExamDate] = useState({})
 // console.log(user.user._id)
+console.log(value,date)
  const valu1 = classes.classes.trim()
 useEffect(() => {
 
@@ -38,7 +39,7 @@ useEffect(() => {
     newValue[1] = "0"+String(newValue[1]);
   };
 
-  let updatedStr = newValue[2] + "-" + newValue[1] + "-" + newValue[0];
+  let updatedStr = newValue[2] + "-" + newValue[0] + "-" + newValue[1];
   setValue(updatedStr);
 
 },[]);
@@ -62,7 +63,7 @@ useEffect(() => {
 
     setProcessing(true);
 
-  const API = `http://localhost:4000/papers?subject=History&className=${valu1}`
+  const API = `https://hackaton-ed.herokuapp.com/papers?subject=History&className=${valu1}`
 
     fetch(API)
       .then(respone => respone.json())
@@ -99,13 +100,13 @@ useEffect(() => {
   };
   console.log(user)
   useEffect(() => {
-    axios.get(`http://localhost:4000/exams/${user?.user?._id}`)
+    axios.get(`https://hackaton-ed.herokuapp.com/exams/${user?.user?._id}`)
     .then((res) => {
-      console.log(res.data)
-      setDate(res.data.exam[0].date)
-      setUserdata(res.data.exam[0]);
-      console.log(res.data.exam[0])
-      console.log(res.data.exam[0].date)
+      // console.log(res.data)
+      setDate(res.data.exam[(res.data.exam.length-1)].date)
+      setUserdata(res.data.exam[(res.data.exam.length-1)]);
+      // console.log(res.data.exam[0])
+      // console.log(res.data.exam[0].date)
     })
     .catch((err) => console.log(err));
   },[user?.user?._id]);

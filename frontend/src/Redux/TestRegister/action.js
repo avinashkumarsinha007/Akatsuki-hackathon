@@ -28,7 +28,7 @@ export const sendtest = (payload) => (dispatch) => {
   dispatch(posttest());
   axios
     .post(
-      `http://localhost:4000/exams`,payload)
+      `https://hackaton-ed.herokuapp.com/exams`,payload)
     .then((res) => {
       dispatch(successtest(res.data));
     })

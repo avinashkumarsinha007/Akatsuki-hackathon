@@ -37,7 +37,7 @@ export const getToken = (payload) => {
 export const registerUser = (payload) => (dispatch) => {
   dispatch(signupReq());
   axios
-    .post(`http://localhost:4000/users/register`, payload)
+    .post(`https://hackaton-ed.herokuapp.com/users/register`, payload)
     .then((res) => {
       dispatch(signupSuc(res.data));
       dispatch(getToken(res.data.token));
